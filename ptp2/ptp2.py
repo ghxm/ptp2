@@ -36,6 +36,7 @@ class ParltrackRecord(object):
         """Initialize."""
 
         self.changes = []
+        self.meta = {}
 
         # set all attributes from record dict
         for k, v in record.items():

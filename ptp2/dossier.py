@@ -6,6 +6,7 @@ class Dossier(ParltrackRecord):
 
         self.events = []
         self.docs = []
+        self.committees = []
 
         super().__init__(record)
 
