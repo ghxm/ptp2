@@ -40,6 +40,6 @@ class ParltrackRecord(object):
 
         # set all attributes from record dict
         for k, v in record.items():
-            setattr(self, k, v)
+            setattr(self, str(k).lower().replace(' ', '_'), v)
 
 
