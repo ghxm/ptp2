@@ -1,4 +1,4 @@
-from ptp2 import ParltrackRecord
+from ptp2.ptp2 import ParltrackRecord
 
 class Dossier(ParltrackRecord):
 
