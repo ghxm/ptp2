@@ -1,6 +1,15 @@
-from ptp2.ptp2 import ParltrackRecord
+from ptp2 import ParltrackRecord
+from ptp2.dossier.event import Event
 
 class Dossier(ParltrackRecord):
+
+    keynames_flatten = ['stage_reached',
+                        'reference',
+                        'title',
+                        'type',
+                        'subtype']
+
+    keynames_listify = [['procedure', 'subject']]
 
     def __init__(self, record):
 
@@ -14,6 +23,10 @@ class Dossier(ParltrackRecord):
         if 'activities' in self.__dict__:
             self.events = self.activities
             del self.activities
+
+        # initialize event objects
+        self.events = [Event(e) for e in self.events] if self.events is not None else []
+
 
     def __getattribute__(self, item):
         """Get attribute."""
@@ -33,12 +46,13 @@ class Dossier(ParltrackRecord):
     def get_docs(self):
         """Get docs."""
 
-        # get docs
-        docs = object.__getattribute__(self, 'docs')
+        docs = []
 
         # and event-only docs
-        for e in self.events:
-            if 'docs' in e:
+        for e in self.events if self.events is not None else []:
+            if hasattr(e, 'docs') and e.docs is not None and len(e.docs) > 0:
                 docs.append(e)
 
         return docs
+
+
