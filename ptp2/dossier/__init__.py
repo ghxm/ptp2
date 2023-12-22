@@ -4,11 +4,11 @@ from ptp2.dossier.doc import Doc
 
 class Dossier(ParltrackRecord):
 
-    keynames_flatten = ['stage_reached',
-                        'reference',
-                        'title',
-                        'type',
-                        'subtype']
+    keynames_flatten = [['procedure', 'stage_reached'],
+                        ['procedure', 'reference'],
+                        ['procedure', 'title'],
+                        ['procedure', 'type'],
+                        ['procedure', 'subtype']]
 
     keynames_listify = [['procedure', 'subject']]
 
@@ -34,6 +34,8 @@ class Dossier(ParltrackRecord):
 
         if item == 'procedure_reference':
             return self.get_procedure_reference()
+        elif item == 'procedure_type':
+            return self.__dict__.get('procedure', {}).get('type', None)
         elif item == 'docs':
             return self.get_docs()
         elif item == 'events':
