@@ -124,6 +124,10 @@ class ParltrackRecord(object):
         for k, v in record.items():
             setattr(self, str(k).lower().replace(' ', '_'), v)
 
+    def get(self, key, default=None):
+        """Implement a get method similar to dictionaries (for compatibility)."""
+        return getattr(self, key, default)
+
     def to_dict(self):
         """Convert to dict."""
 
