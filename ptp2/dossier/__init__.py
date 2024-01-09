@@ -60,7 +60,7 @@ class Dossier(ParltrackRecord):
         docs = [Doc(doc) for doc in object.__getattribute__(self, 'docs')] if object.__getattribute__(self, 'docs') is not None else []
 
         # and event-only docs
-        if include_event_docs:
+        if include_events_with_docs:
             [docs.append(e) for e in self.events if e.has_docs()]
 
         return docs
