@@ -54,14 +54,16 @@ class Dossier(ParltrackRecord):
         events = object.__getattribute__(self, 'events')
         return sorted(events, key=lambda x: x.date if hasattr(x, 'date') else 99) if events is not None else []
 
-    def get_docs(self, include_events_with_docs=False):
+    def get_docs(self, include_events_with_docs=True):
         """Get docs."""
 
-        docs = [Doc(doc) for doc in object.__getattribute__(self, 'docs')] if object.__getattribute__(self, 'docs') is not None else []
+        # TODO docs are events for now since they have the same attributes
+        docs = [Event(doc) for doc in object.__getattribute__(self, 'docs')] if object.__getattribute__(self, 'docs') is not None else []
 
-        # and event-only docs
+        # add event-only docs
         if include_events_with_docs:
-            [docs.append(e) for e in self.events if e.has_docs()]
+            # make sure they are not in the docs list already
+            [docs.append(e) for e in self.events if e.has_docs() and (e.get('type', None) is not None and (e.get('type') not in [d.get('type', None) for d in docs]) or e.get('type', None) is None)]
 
         return docs
 
