@@ -24,3 +24,7 @@ class Event(ParltrackSubRecord):
 
         # initialize doc objects
         self.docs = [Doc(d) for d in self.docs] if hasattr(self, 'docs') and self.docs is not None else []
+
+    def has_docs(self):
+        """Return True if event has docs."""
+        return len(self.docs) > 0
