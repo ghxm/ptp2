@@ -9,7 +9,7 @@ Python parser for parltrack.org dumps. Under active development.
 
 
 * Free software: MIT license
-* Documentation: https://ptp2.readthedocs.io.
+
 
 
 
