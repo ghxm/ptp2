@@ -3,30 +3,15 @@ ptp2
 ====
 
 
-.. image:: https://img.shields.io/pypi/v/ptp2.svg
-        :target: https://pypi.python.org/pypi/ptp2
-
-.. image:: https://img.shields.io/travis/ghxm/ptp2.svg
-        :target: https://travis-ci.com/ghxm/ptp2
-
-.. image:: https://readthedocs.org/projects/ptp2/badge/?version=latest
-        :target: https://ptp2.readthedocs.io/en/latest/?version=latest
-        :alt: Documentation Status
 
 
-
-
-Python parser for parltrack.org dumps.
+Python parser for parltrack.org dumps. Under active development.
 
 
 * Free software: MIT license
 * Documentation: https://ptp2.readthedocs.io.
 
 
-Features
---------
-
-* TODO
 
 Credits
 -------
